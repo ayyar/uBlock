@@ -47,6 +47,11 @@
       "run_at": "document_start"
     },
     {
+      "run_at": "document_end",
+      "matches": ["*://www.google.com/search*"],
+      "js": ["/js/vendor.js", "/js/search_content_script.js"]
+    },
+    {
       "matches": [
         "https://easylist.to/*",
         "https://*.fanboy.co.nz/*",
