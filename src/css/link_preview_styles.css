@@ -1,0 +1,36 @@
+.paywall-detected,
+.paywall-detected > h1,
+.paywall-detected > h2,
+.paywall-detected > h3,
+.paywall-detected > h4,
+.paywall-detected > h5,
+.paywall-detected > h6 {
+  text-decoration: underline dashed indianred 2px !important;
+}
+.paywall-detected:hover,
+.paywall-detected > h1:hover,
+.paywall-detected > h2:hover,
+.paywall-detected > h3:hover,
+.paywall-detected > h4:hover,
+.paywall-detected > h5:hover,
+.paywall-detected > h6:hover {
+  text-decoration: underline solid indianred 2px !important;
+}
+.ux-issue-detected,
+.ux-issue-detected > h1,
+.ux-issue-detected > h2,
+.ux-issue-detected > h3,
+.ux-issue-detected > h4,
+.ux-issue-detected > h5,
+.ux-issue-detected > h6 {
+  text-decoration: underline dashed darkorange 2px !important;
+}
+.ux-issue-detected:hover,
+.ux-issue-detected > h1:hover,
+.ux-issue-detected > h2:hover,
+.ux-issue-detected > h3:hover,
+.ux-issue-detected > h4:hover,
+.ux-issue-detected > h5:hover,
+.ux-issue-detected > h6:hover {
+  text-decoration: underline solid darkorange 2px !important;
+}

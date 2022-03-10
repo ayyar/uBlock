@@ -49,6 +49,7 @@
     {
       "run_at": "document_end",
       "matches": ["*://www.google.com/search*"],
+      "css": ["css/link_preview_styles.css"],
       "js": ["/js/vendor.js", "/js/search_content_script.js"]
     },
     {
