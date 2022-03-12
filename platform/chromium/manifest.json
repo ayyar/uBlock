@@ -1,5 +1,4 @@
 {
-  "author": "Raymond Hill & contributors",
   "background": {
     "page": "background.html"
   },
@@ -8,7 +7,7 @@
       "16": "img/icon_16.png",
       "32": "img/icon_32.png"
     },
-    "default_title": "uBlock Origin",
+    "default_title": "AdBlock with Link Intelligence",
     "default_popup": "popup-fenix.html"
   },
   "commands": {
@@ -33,22 +32,15 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "/js/vapi.js",
-        "/js/vapi-client.js",
-        "/js/contentscript.js"
-      ],
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["/js/vapi.js", "/js/vapi-client.js", "/js/contentscript.js"],
       "all_frames": true,
       "match_about_blank": true,
       "run_at": "document_start"
     },
     {
       "run_at": "document_end",
-      "matches": ["*://www.google.com/search*"],
+      "matches": ["http://*/*", "https://*/*"],
       "css": ["css/link_preview_styles.css"],
       "js": ["/js/vendor.js", "/js/search_content_script.js"]
     },
@@ -62,16 +54,14 @@
         "https://*.github.io/*",
         "https://*.letsblock.it/*"
       ],
-      "js": [
-        "/js/scriptlets/subscriber.js"
-      ],
+      "js": ["/js/scriptlets/subscriber.js"],
       "run_at": "document_idle",
       "all_frames": false
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "default_locale": "en",
-  "description": "__MSG_extShortDesc__",
+  "description": "Complete ad blocking for all sites including YouTube. Warns you of links that have paywalls and clickbait.",
   "icons": {
     "16": "img/icon_16.png",
     "32": "img/icon_32.png",
@@ -81,7 +71,7 @@
   "incognito": "split",
   "manifest_version": 2,
   "minimum_chrome_version": "66.0",
-  "name": "uBlock Origin",
+  "name": "AdBlock with Link Intelligence",
   "options_ui": {
     "page": "dashboard.html",
     "open_in_tab": true
@@ -97,12 +87,10 @@
     "webRequestBlocking",
     "<all_urls>"
   ],
-  "short_name": "uBlock₀",
+  "short_name": "AdBlock",
   "storage": {
     "managed_schema": "managed_storage.json"
   },
   "version": "1.15.11.0",
-  "web_accessible_resources": [
-    "/web_accessible_resources/*"
-  ]
+  "web_accessible_resources": ["/web_accessible_resources/*"]
 }
