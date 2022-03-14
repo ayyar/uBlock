@@ -1,1 +1,674 @@
-!function(e){var t={};function o(n){if(t[n])return t[n].exports;var s=t[n]={i:n,l:!1,exports:{}};return e[n].call(s.exports,s,s.exports,o),s.l=!0,s.exports}o.m=e,o.c=t,o.d=function(e,t,n){o.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},o.t=function(e,t){if(1&t&&(e=o(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var s in e)o.d(n,s,function(t){return e[t]}.bind(null,s));return n},o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,"a",t),t},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.p="",o(o.s=2)}([,,function(e,t,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=o(3);n.inChromeContext()&&chrome.runtime.getURL("assets"),n.inChromeContext()&&chrome.runtime.id,function(){if(n.inChromeContext()){const e=function(e,t){if(n.inChromeContext()){const t=chrome.i18n.getMessage(e);if(t.length>0)return t}return void 0!==t?t:e}("@@ui_locale");if(e)return e}}();var s=!1;const a={"www.bloomberg.com":{walled:{paywalled:"aggressive"}},"www.wsj.com":{walled:{paywalled:"aggressive"}},"seekingalpha.com":{walled:{paywalled:"aggressive"}},"www.forbes.com":{ux:{bloat:"high"}},"money.usnews.com":{ux:{bloat:"high"}},"www.nytimes.com":{walled:{paywalled:"aggressive"}},"cooking.nytimes.com":{walled:{paywalled:"aggressive"}},"www.washingtonpost.com":{walled:{paywalled:"aggressive"}},"nypost.com":{ux:{bloat:"high"}},"glassdoor.com":{walled:{loginwall:"aggressive"}},"www.quora.com":{walled:{loginwall:"aggressive"}},"reuters.com":{walled:{metered:"aggressive"}},"www.reuters.com":{walled:{metered:"aggressive"}},"www.theatlantic.com":{walled:{metered:"aggressive"}},"time.com":{walled:{metered:"aggressive"}},"www.usatoday.com":{ux:{bloat:"high"}},"www.fool.com":{ux:{clickbait:!0}},"www.wired.com":{walled:{loginwall:"mild"}},"theathletic.com":{walled:{paywalled:"aggressive"}},"www.thestreet.com":{ux:{bloat:"high"}},"venturebeat.com":{ux:{bloat:"high"}},"www.sfgate.com":{ux:{bloat:"low"}},"www.barrons.com":{walled:{paywalled:"aggressive"}},"www.nbcsports.com":{ux:{bloat:"high"}},"www.ft.com":{walled:{paywalled:"aggressive"}},"www.economist.com":{walled:{paywalled:"aggressive"}},"natashaskitchen.com":{ux:{bloat:"high"}},"www.allrecipes.com":{ux:{bloat:"high"}},"www.southernliving.com":{ux:{bloat:"high"}},"www.twopeasandtheirpod.com":{ux:{bloat:"high"}},"nymag.com":{walled:{paywalled:"aggressive"}},"www.latimes.com":{walled:{paywalled:"aggressive"}},"www.chicagotribune.com":{walled:{paywalled:"aggressive"}},"www.rollingstone.com":{walled:{paywalled:"mild"}},"www.nationalgeographic.com":{walled:{paywalled:"aggressive"}},"www.jocooks.com":{ux:{bloat:"low"}},"www.chelseasmessyapron.com":{ux:{bloat:"low"}},"www.theaustralian.com.au":{walled:{paywalled:"aggressive"}},"www.bostonglobe.com":{walled:{paywalled:"aggressive"}},"www.telegraph.co.uk":{walled:{paywalled:"aggressive"}},"www.bostonherald.com":{walled:{metered:"aggressive"}},"www.smh.com.au":{walled:{metered:"aggressive"}},"technologyreview.com":{walled:{metered:"aggressive"}},"www.thetimes.co.uk":{walled:{metered:"aggressive"}},"www.scientificamerican.com":{walled:{metered:"aggressive"}},"www.thestar.com":{walled:{metered:"aggressive"}},"www.lemonde.fr":{walled:{metered:"aggressive"}}};function r(e){const t=e.walled;if(void 0===t)return!1;return"none"!==t.loginwall||"none"!==t.metered||"none"!==t.paywalled}function l(e){const t=e.ux;if(void 0===t)return!1;return!!(t.bloat||t.bot_generated||t.clickbait)}function i(e){if(!r(e))return"";const t=e.walled;let o="";return"mild"===t.paywalled?o="PAYWALL: Some content on this site is paywalled.":"aggressive"===t.paywalled?o="PAYWALL: Most content on this site is paywalled.":"mild"===t.metered||"aggressive"===t.metered?o="PAYWALL: Allows you to view a number of items before making you pay.":"mild"!==t.loginwall&&"aggressive"!==t.loginwall||(o="LOGIN WALL: This site requires logging in to view content."),o}function c(e){if(!l(e))return"";const t=e.ux;let o="";if(t.clickbait)o="Contains clickbait content.";else if(t.bot_generated)o="Bot-generated content.";else if(t.bloat){o=`Contains ${"high"===t.bloat?"excessive number of ads":"some ads"}.`}return o}!async function(){!async function(){if(s)return;s=!0;const e=document.querySelectorAll("a");for(let t of e)if(t&&t.href){const e=new URL(t.href);if(e.hostname in a&&e.hostname!==window.location.hostname){const o=a[e.hostname];r(o)&&(t.classList.add("paywall-detected"),t.setAttribute("title",i(o))),l(o)&&(t.classList.add("ux-issue-detected"),t.setAttribute("title",c(o)))}}}()}()},function(e,t,o){"use strict";function n(){try{if(void 0!==chrome&&void 0!==chrome.runtime)return!0}catch(e){}return!1}function s(){try{if(void 0!==browser&&void 0!==browser.runtime)return!0}catch(e){}return!1}Object.defineProperty(t,"__esModule",{value:!0}),t.getFeaturePrefixSuffix=t.getFeatureDoubleSlashRedirecting=t.getFeatureHavingAtSymbol=t.getFeatureUrlLength=t.getBrowserWrapper=t.removeElements=t.clickElements=t.logCanvas=t.loadImage=t.PROD_APP_URL=t.getImgUrl=t.hasAnyCanonicalLanguages=t.getCanonicalLanguage=t.getUserId=t.getRootId=t.getGlobals=t.getAppType=t.AppType=t.getChatIdForUrl=t.generateRandomEmail=t.sleep=t.sum=t.inSafariContext=t.inChromeContext=t.asyncify3=t.asyncify2=t.asyncify1=t.asyncify=void 0,t.asyncify=async function(e,...t){return new Promise((o,n)=>e(...t,o))},t.asyncify1=async function(e,t){return new Promise((o,n)=>e(t,o))},t.asyncify2=async function(e,t,o){return new Promise((n,s)=>e(t,o,n))},t.asyncify3=async function(e,t,o,n){return new Promise((s,a)=>e(t,o,n,s))},t.inChromeContext=n,t.inSafariContext=s,t.sum=function(e,t){return e+t},t.sleep=e=>new Promise(t=>setTimeout(t,e)),t.generateRandomEmail=function(e=1e6,t=10*e){return`User${function(e,t){return e=Math.ceil(e),t=Math.floor(t),Math.floor(Math.random()*(t-e+1))+e}(e,t)}@example.com`},t.getChatIdForUrl=function(e,t){const o=e.pathname.split("/");let n=o[o.length-1];switch(e.host){case"twitch.tv":case"www.twitch.tv":3===o.length&&"videos"===o[o.length-2]&&(n="videos/"+n);break;case"reddit.com":case"www.reddit.com":n="https://www.reddit.com/"===e.href?"":`rpan/r/${o[o.length-2]}/${o[o.length-1]}`;break;case"www.youtube.com":case"youtube.com":const t=e.searchParams.get("v");n=null!==t?t:n}return t(`${e.host}/${n}`)};const a={blur:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLSdJlqvMLfb0F5tPupJ5GsEO1szufZsqPjKyqGP7qJ0Z274msQ/viewform?usp=sf_link",analyticsId:"168740f8d5e0d6c0d6933aea7da9a391",gaId:"UA-166253548-8",sampleEveryN:10,needsTfjs:!0,needsBodyPix:!0,needsFaceMesh:!1,needsVideo:!0,hasMemes:!1,rootId:"ui-root-blur",needsContextMenu:!1,hasNotifications:!1,useGoogleLogin:!1,useCircleButton:!1,useChat:!1,usesUserIdFromMeetDom:!0},reactions:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLScUMDMtZ1DWfbxHWkJTF_ujoymsOIfrX5B856tok13L8W5_Vw/viewform?usp=sf_link",analyticsId:"ba75218b01ede8b41e25fc32ddcffbce",gaId:"UA-166253548-7",sampleEveryN:2,needsTfjs:!1,needsBodyPix:!1,needsFaceMesh:!1,needsVideo:!0,hasMemes:!0,rootId:"ui-root-react",needsContextMenu:!1,hasNotifications:!1,useGoogleLogin:!0,useCircleButton:!1,useChat:!1,usesUserIdFromMeetDom:!0},filters:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLSdwaTfOwsM2MJjHprN659-CYZGwdEsYRWv5yfXBS2S5NAtpNA/viewform?usp=sf_link",analyticsId:"81579e57a602b59eb1ed1591fd013f69",gaId:"UA-166253548-6",sampleEveryN:10,needsTfjs:!0,needsBodyPix:!1,needsFaceMesh:!0,needsVideo:!0,hasMemes:!1,rootId:"ui-root-filters",needsContextMenu:!1,hasNotifications:!1,useGoogleLogin:!1,useCircleButton:!1,useChat:!1,usesUserIdFromMeetDom:!0},memes:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLSdDhGNk7Z4W8EHb8mQMSqSObqRqw1Fs9QTFSu_ZA6luOpD7Hw/viewform?usp=sf_link",analyticsId:"f06f8d4924c3ad6de940881511ca6035",gaId:null,sampleEveryN:1,needsTfjs:!1,needsBodyPix:!1,needsFaceMesh:!1,needsVideo:!1,hasMemes:!0,rootId:"ui-root-react",needsContextMenu:!0,hasNotifications:!0,useGoogleLogin:!1,useCircleButton:!1,useChat:!1,usesUserIdFromMeetDom:!1},chat:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLSejfFFIfK_eMmvV2DR6XYV9yJaz6wQZdtPbD0ly_zvHQDFj5Q/viewform?usp=sf_link",analyticsId:"ea2cd6ebfd239cd9bdcbad7e8a6dc5f4",gaId:null,sampleEveryN:1,needsTfjs:!1,needsBodyPix:!1,needsFaceMesh:!1,needsVideo:!1,hasMemes:!1,rootId:"ui-root-react",needsContextMenu:!1,hasNotifications:!1,useGoogleLogin:!0,useCircleButton:!1,useChat:!0,usesUserIdFromMeetDom:!1},phishing:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLSdDhGNk7Z4W8EHb8mQMSqSObqRqw1Fs9QTFSu_ZA6luOpD7Hw/viewform?usp=sf_link",analyticsId:"f06f8d4924c3ad6de940881511ca6035",gaId:null,sampleEveryN:1,needsTfjs:!1,needsBodyPix:!1,needsFaceMesh:!1,needsVideo:!1,hasMemes:!1,rootId:"ui-root-react",needsContextMenu:!0,hasNotifications:!1,useGoogleLogin:!1,useCircleButton:!1,useChat:!1,usesUserIdFromMeetDom:!1},whatsapp:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLSekd9dIdw3UI2NUvyLw8UlnywzjxiIYWEM9KJ2Rvfn-NSLY9A/viewform?usp=sf_link",analyticsId:"60b23fdd0d8c414094a2ea7191319809",gaId:null,sampleEveryN:1,needsTfjs:!1,needsBodyPix:!1,needsFaceMesh:!1,needsVideo:!0,hasMemes:!0,rootId:"ui-root-react",needsContextMenu:!1,hasNotifications:!1,useGoogleLogin:!0,useCircleButton:!1,useChat:!1,usesUserIdFromMeetDom:!0},paywall_detector:{feedbackUrl:"https://docs.google.com/forms/d/e/1FAIpQLSdRkeOFgAg7_g5zrx1DvbNzy83D_E6NhW0wd72I62HOd65C2w/viewform?usp=sf_link",analyticsId:"60b23fdd0d8c414094a2ea7191319809",gaId:null,sampleEveryN:1,needsTfjs:!1,needsBodyPix:!1,needsFaceMesh:!1,needsVideo:!1,hasMemes:!1,rootId:"ui-root-react",needsContextMenu:!1,hasNotifications:!1,useGoogleLogin:!1,useCircleButton:!1,useChat:!1,usesUserIdFromMeetDom:!1}};var r;function l(){return r.APP_PAYWALL_DETECTOR}function i(e){return e.map(e=>e.split("-")[0])}function c(e){let t=!1;if(e.parentElement&&void 0!==e.parentElement){t=!!e.parentElement.removeChild(e)}return t}function d(){const e=document.querySelector("shreddit-experience-tree");if(null===e||null===e.shadowRoot)return null;const t=e.shadowRoot.querySelector("xpromo-app-selector")||e.shadowRoot.querySelector("xpromo-pill");if(null===t||null===t.shadowRoot)return null;return t.shadowRoot.querySelector("button[class~='continue']")||t.shadowRoot.querySelector("button[class~='closeButton']")}!function(e){e.APP_BLUR="blur",e.APP_REACTIONS="reactions",e.APP_FILTERS="filters",e.APP_MEMES="memes",e.APP_CHAT="chat",e.APP_PHISHING="phishing",e.APP_WHATSAPP="whatsapp",e.APP_PAYWALL_DETECTOR="paywall_detector"}(r=t.AppType||(t.AppType={})),t.getAppType=l,t.getGlobals=function(){return a[l()]},t.getRootId=function(e){return a[e].rootId},t.getUserId=function(){return document.getElementsByName("__r__uid")[0]&&document.getElementsByName("__r__uid")[0].getAttribute("content")?document.getElementsByName("__r__uid")[0].getAttribute("content"):"unknown"},t.getCanonicalLanguage=function(e){const t=i(e),o=new Set(t);return 1===o.size?Array.from(o)[0]:t[0]},t.hasAnyCanonicalLanguages=function(e,t=navigator.languages){const o=new Set(i(t));return e.some(e=>o.has(e))},t.getImgUrl=function(e){if(void 0===e)return null;const t=new URL(e);return new URLSearchParams(t.search).get("imgurl")},t.PROD_APP_URL="https://www.memefusion.com",t.loadImage=async function(e){return new Promise((t,o)=>{const n=new Image;n.crossOrigin="anonymous",n.onload=()=>t(n),n.onerror=()=>o(null),n.src=e})},t.logCanvas=function(e){const t=e.toDataURL();console.log("%c ",`font-size:${e.height}px; background:url(${t}) no-repeat;`)},t.clickElements=function(){const e=["button[class~=XPromoPopup__actionButton]","button[class~=XPromoPill__closeButton]","button[class~=continue]","button[data-tracking-id~=mwlite_continue_mweb_click]","button[class~=SeeImgurOIA-actions-action-button]"];for(let t of e){const e=document.querySelectorAll(t);if(e.length>0){console.log(`Found ${e.length} elements for ${t}`);for(let t of[e.item(0)]){return t.click(),1}}}const t={"www.reddit.com":d},o=window.location.hostname;if(o in t){const e=t[o]();if(e)return console.log("Found button via search= "+e),e.click(),1}return 0},t.removeElements=function(){const e=["div[class^='OUTBRAIN']","div[class^='outbrain']","div[id*=taboola]","div[class*=taboola]","div[class*=adspace-widget]",'div[data-act-id="outbrain_smartfeed_0"]',"div[class^='dianomi']","iframe[id^='_mN_main']","div[class^='ym']"];let t=0;for(let o of e){const e=document.querySelectorAll(o);console.log(`Found ${e.length} elements for ${o}`);for(let o of e){c(o)&&t++}}return console.log(`Removed ${t} native ads.`),t},t.getBrowserWrapper=function(){return s()?browser:chrome},t.getFeatureUrlLength=function(e){const t=new URL(e);return t.hostname.length<54?-1:t.hostname.length>=54&&t.hostname.length<=75?0:1},t.getFeatureHavingAtSymbol=function(e){return e.startsWith("https://www.google.com/maps/")||e.startsWith("https://medium.com")?-1:e.includes("@")?1:-1},t.getFeatureDoubleSlashRedirecting=function(e){return e.slice(8).includes("//")?1:-1},t.getFeaturePrefixSuffix=function(e){return e.startsWith("https://www.merriam-webster.com")?-1:new URL(e).hostname.includes("-")?1:-1}}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */,
+/* 1 */,
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Utils_1 = __webpack_require__(3);
+function getAssetUrl() {
+    return Utils_1.inChromeContext() ? chrome.runtime.getURL('assets') : '.';
+}
+function getExtensionId() {
+    if (Utils_1.inChromeContext()) {
+        return chrome.runtime.id;
+    }
+    return 'reactExtensionId';
+}
+function getMessage(key, fallback = undefined) {
+    if (Utils_1.inChromeContext()) {
+        const ret = chrome.i18n.getMessage(key);
+        if (ret.length > 0) {
+            return ret;
+        }
+    }
+    if (fallback !== undefined) {
+        return fallback;
+    }
+    return key;
+}
+function getUiLocale() {
+    if (Utils_1.inChromeContext()) {
+        const locale = getMessage('@@ui_locale');
+        if (locale) {
+            return locale;
+        }
+    }
+    return 'unknown';
+}
+function getExtVersion() {
+    let version = 'unknown';
+    if (Utils_1.inChromeContext() === false) {
+        return version;
+    }
+    if (chrome.runtime &&
+        chrome.runtime.getManifest() &&
+        chrome.runtime.getManifest().version) {
+        version = chrome.runtime.getManifest().version;
+    }
+    return version;
+}
+const EXTENSION_ASSETS_URL = getAssetUrl();
+const EXTENSION_ID = getExtensionId();
+const EXTENSION_UI_LOCALE = getUiLocale();
+var WAUILoopStarted = false;
+async function sendBackgroundRequest(request) {
+    const response = await new Promise((resolve, reject) => chrome.runtime.sendMessage(request, resolve));
+    return response;
+}
+const PAYWALLED_SITES = {
+    'www.bloomberg.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.wsj.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'seekingalpha.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.forbes.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'money.usnews.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'www.nytimes.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'cooking.nytimes.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.washingtonpost.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'nypost.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'glassdoor.com': {
+        walled: {
+            loginwall: 'aggressive'
+        }
+    },
+    'www.quora.com': {
+        walled: {
+            loginwall: 'aggressive'
+        }
+    },
+    'reuters.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.reuters.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.theatlantic.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'time.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.usatoday.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'www.fool.com': {
+        ux: {
+            clickbait: true
+        }
+    },
+    'www.wired.com': {
+        walled: {
+            loginwall: 'mild'
+        }
+    },
+    'theathletic.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.thestreet.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'venturebeat.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'www.sfgate.com': {
+        ux: {
+            bloat: 'low'
+        }
+    },
+    'www.barrons.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.nbcsports.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'www.ft.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.economist.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'natashaskitchen.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'www.allrecipes.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'www.southernliving.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'www.twopeasandtheirpod.com': {
+        ux: {
+            bloat: 'high'
+        }
+    },
+    'nymag.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.latimes.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.chicagotribune.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.rollingstone.com': {
+        walled: {
+            paywalled: 'mild'
+        }
+    },
+    'www.nationalgeographic.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.jocooks.com': {
+        ux: {
+            bloat: 'low'
+        }
+    },
+    'www.chelseasmessyapron.com': {
+        ux: {
+            bloat: 'low'
+        }
+    },
+    'www.theaustralian.com.au': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.bostonglobe.com': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.telegraph.co.uk': {
+        walled: {
+            paywalled: 'aggressive'
+        }
+    },
+    'www.bostonherald.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.smh.com.au': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'technologyreview.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.thetimes.co.uk': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.scientificamerican.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.thestar.com': {
+        walled: {
+            metered: 'aggressive'
+        }
+    },
+    'www.lemonde.fr': {
+        walled: {
+            metered: 'aggressive'
+        }
+    }
+};
+function hasPaywall(labelData) {
+    const walled = labelData.walled;
+    if (walled === undefined) {
+        return false;
+    }
+    const hasPaywall = walled.loginwall !== 'none' ||
+        walled.metered !== 'none' ||
+        walled.paywalled !== 'none';
+    return hasPaywall;
+}
+function hasUxIssue(labelData) {
+    const ux = labelData.ux;
+    if (ux === undefined) {
+        return false;
+    }
+    const hasUxIssues = !!(ux.bot_generated || ux.clickbait);
+    return hasUxIssues;
+}
+function getPaywallTooltipText(labelData) {
+    if (!hasPaywall(labelData)) {
+        return '';
+    }
+    const walled = labelData.walled;
+    let tooltip = '';
+    if (walled.paywalled === 'mild') {
+        tooltip = 'PAYWALL: Some content on this site is paywalled.';
+    }
+    else if (walled.paywalled === 'aggressive') {
+        tooltip = 'PAYWALL: Most content on this site is paywalled.';
+    }
+    else if (walled.metered === 'mild' || walled.metered === 'aggressive') {
+        tooltip =
+            'PAYWALL: Allows you to view a number of items before making you pay.';
+    }
+    else if (walled.loginwall === 'mild' || walled.loginwall === 'aggressive') {
+        tooltip = 'LOGIN WALL: This site requires logging in to view content.';
+    }
+    return tooltip;
+}
+function getUxIssueTooltipText(labelData) {
+    if (!hasUxIssue(labelData)) {
+        return '';
+    }
+    const ux = labelData.ux;
+    let tooltip = '';
+    if (ux.clickbait) {
+        tooltip = 'Contains clickbait content.';
+    }
+    else if (ux.bot_generated) {
+        tooltip = 'Bot-generated content.';
+    }
+    else if (ux.bloat) {
+        const bloatText = ux.bloat === 'high' ? 'excessive number of ads' : 'some ads';
+        tooltip = `Contains ${bloatText}.`;
+    }
+    return tooltip;
+}
+async function createWaUI() {
+    if (WAUILoopStarted) {
+        return;
+    }
+    WAUILoopStarted = true;
+    const searchResultLinks = document.querySelectorAll('a');
+    for (let link of searchResultLinks) {
+        if (link && link.href) {
+            const resultURL = new URL(link.href);
+            if (resultURL.hostname in PAYWALLED_SITES &&
+                resultURL.hostname !== window.location.hostname) {
+                const labelData = PAYWALLED_SITES[resultURL.hostname];
+                if (hasPaywall(labelData)) {
+                    link.classList.add('paywall-detected');
+                    link.setAttribute('title', getPaywallTooltipText(labelData));
+                }
+                if (hasUxIssue(labelData)) {
+                    link.classList.add('ux-issue-detected');
+                    link.setAttribute('title', getUxIssueTooltipText(labelData));
+                }
+            }
+        }
+    }
+}
+async function WA_main() {
+    createWaUI();
+}
+WA_main();
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// Type declarations.
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getFeatureDoubleSlashRedirecting = exports.getFeatureUrlLength = exports.getBrowserWrapper = exports.removeElements = exports.logCanvas = exports.loadImage = exports.getImgUrl = exports.hasAnyCanonicalLanguages = exports.getCanonicalLanguage = exports.getGlobals = exports.getAppType = exports.AppType = exports.sleep = exports.sum = exports.inSafariContext = exports.inChromeContext = exports.asyncify3 = exports.asyncify2 = exports.asyncify1 = exports.asyncify = void 0;
+async function asyncify(functionWithCallback, ...args) {
+    const ret = new Promise((resolve, reject) => functionWithCallback(...args, resolve));
+    return ret;
+}
+exports.asyncify = asyncify;
+async function asyncify1(functionWithCallback, arg0) {
+    const ret = new Promise((resolve, reject) => functionWithCallback(arg0, resolve));
+    return ret;
+}
+exports.asyncify1 = asyncify1;
+async function asyncify2(functionWithCallback, arg0, arg1) {
+    const ret = new Promise((resolve, reject) => functionWithCallback(arg0, arg1, resolve));
+    return ret;
+}
+exports.asyncify2 = asyncify2;
+async function asyncify3(functionWithCallback, arg0, arg1, arg2) {
+    const ret = new Promise((resolve, reject) => functionWithCallback(arg0, arg1, arg2, resolve));
+    return ret;
+}
+exports.asyncify3 = asyncify3;
+// clang-format on
+// Functions.
+function safeGet(x, defaultValue) {
+    return x !== null && x !== undefined ? x : defaultValue;
+}
+function checkNotNull(x) {
+    return x !== null && x !== undefined;
+}
+// eslint-disable-next-line
+function pickRandomItem(items) {
+    return items[Math.floor(Math.random() * items.length)];
+}
+function inChromeContext() {
+    try {
+        if (chrome !== undefined && chrome.runtime !== undefined) {
+            return true;
+        }
+    }
+    catch (e) { }
+    return false;
+}
+exports.inChromeContext = inChromeContext;
+function inSafariContext() {
+    try {
+        // @ts-ignore
+        if (browser !== undefined && browser.runtime !== undefined) {
+            return true;
+        }
+    }
+    catch (e) { }
+    return false;
+}
+exports.inSafariContext = inSafariContext;
+function sum(x, y) {
+    return x + y;
+}
+exports.sum = sum;
+exports.sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function checkExtensionName(name) {
+    if (!inChromeContext()) {
+        return false;
+    }
+    const msg1 = chrome.i18n.getMessage(name);
+    const msg2 = chrome.runtime.getManifest().name;
+    return msg1 === msg2;
+}
+const PAYWALL_DETECTOR_GLOBALS = {
+    feedbackUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdRkeOFgAg7_g5zrx1DvbNzy83D_E6NhW0wd72I62HOd65C2w/viewform?usp=sf_link',
+};
+const GLOBALS = {
+    paywall_detector: PAYWALL_DETECTOR_GLOBALS
+};
+var AppType;
+(function (AppType) {
+    AppType["APP_PAYWALL_DETECTOR"] = "paywall_detector";
+})(AppType = exports.AppType || (exports.AppType = {}));
+function getAppType() {
+    return AppType.APP_PAYWALL_DETECTOR;
+}
+exports.getAppType = getAppType;
+function getGlobals() {
+    return GLOBALS[getAppType()];
+}
+exports.getGlobals = getGlobals;
+function getCanonicalLanguages(languages) {
+    const canonicalLanguages = languages.map((language) => language.split('-')[0]);
+    return canonicalLanguages;
+}
+function getCanonicalLanguage(languages) {
+    const canonicalLanguages = getCanonicalLanguages(languages);
+    const langs = new Set(canonicalLanguages);
+    // https://stackoverflow.com/a/36042028
+    // Treat any non english language as
+    const ret = langs.size === 1 ? Array.from(langs)[0] : canonicalLanguages[0];
+    return ret;
+}
+exports.getCanonicalLanguage = getCanonicalLanguage;
+function hasAnyCanonicalLanguages(languagesToCheck, browserLanguages = navigator.languages) {
+    const canonicalLanguages = new Set(getCanonicalLanguages(browserLanguages));
+    return languagesToCheck.some((lang) => canonicalLanguages.has(lang));
+}
+exports.hasAnyCanonicalLanguages = hasAnyCanonicalLanguages;
+function getImgUrl(urlStr) {
+    if (urlStr === undefined) {
+        return null;
+    }
+    const url = new URL(urlStr);
+    const params = new URLSearchParams(url.search);
+    const arg = params.get('imgurl');
+    return arg;
+}
+exports.getImgUrl = getImgUrl;
+async function loadImage(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(null);
+        img.src = url;
+    });
+}
+exports.loadImage = loadImage;
+function logCanvas(canvas) {
+    const data = canvas.toDataURL();
+    console.log('%c ', `font-size:${canvas.height}px; background:url(${data}) no-repeat;`);
+}
+exports.logCanvas = logCanvas;
+function removeElement(element) {
+    let ret = false;
+    if (element.parentElement && typeof element.parentElement !== 'undefined') {
+        const removeChild = element.parentElement.removeChild(element);
+        ret = !!removeChild;
+    }
+    return ret;
+}
+function removeElements() {
+    const badDivs = [
+        "div[class^='OUTBRAIN']",
+        "div[class^='outbrain']",
+        'div[id*=taboola]',
+        'div[class*=taboola]',
+        'div[class*=adspace-widget]',
+        'div[data-act-id="outbrain_smartfeed_0"]',
+        `div[class^='dianomi']`,
+        "iframe[id^='_mN_main']",
+        "div[class^='ym']"
+    ];
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll#examples
+    // https://www.w3schools.com/cssref/css_selectors.asp
+    let removedCount = 0;
+    for (let badDiv of badDivs) {
+        const elements = document.querySelectorAll(badDiv);
+        console.log(`Found ${elements.length} elements for ${badDiv}`);
+        for (let element of elements) {
+            const removedSuccess = removeElement(element);
+            removedSuccess && removedCount++;
+        }
+    }
+    console.log(`Removed ${removedCount} native ads.`);
+    return removedCount;
+}
+exports.removeElements = removeElements;
+function getBrowserWrapper() {
+    // @ts-ignore
+    return inSafariContext() ? browser : chrome;
+}
+exports.getBrowserWrapper = getBrowserWrapper;
+// Features for TFJS phishing URL detection model. For more info:
+// https://docs.google.com/document/d/1Pj6QXTWK8KuHGUtwGOR7-YVMWbKYbVeXdEFnlEV3nJQ
+function getFeatureUrlLength(url) {
+    const urlObj = new URL(url);
+    if (urlObj.hostname.length < 54) {
+        return -1;
+    }
+    else if (urlObj.hostname.length >= 54 && urlObj.hostname.length <= 75) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+exports.getFeatureUrlLength = getFeatureUrlLength;
+function getFeatureDoubleSlashRedirecting(url) {
+    return url.slice(8).includes('//') ? 1 : -1;
+}
+exports.getFeatureDoubleSlashRedirecting = getFeatureDoubleSlashRedirecting;
+
+
+/***/ })
+/******/ ]);
